@@ -35,9 +35,6 @@ app.get("/cats/:catId", (req, res) => {
 app.patch("/cats/:catId", (req, res) => {
   Cat.update(req.body, { where: { id: req.params.catId } })
     .then((cat) => {
-      if (!cat) {
-        return res.status(400).json({ error: "Cat not found" });
-      }
       res.status(201).json(cat);
     })
     .catch((err) => {
